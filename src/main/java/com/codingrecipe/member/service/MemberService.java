@@ -39,7 +39,7 @@ public class MemberService {
     }
 
     public MemberDTO findByMemberEmail(String loginEmail) {
-        return memberRepository.findByMemberEmai(loginEmail);
+        return memberRepository.findByMemberEmail(loginEmail);
     }
 
     public boolean update(MemberDTO memberDTO) {
@@ -49,6 +49,15 @@ public class MemberService {
         }else {
             return false;
 
+        }
+    }
+
+    public String emailCheck(String memberEmail) {
+        MemberDTO memberDTO = memberRepository.findByMemberEmail(memberEmail);
+        if (memberDTO == null) {
+            return "ok";
+        } else {
+            return "no";
         }
     }
 }
